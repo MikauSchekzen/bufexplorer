@@ -108,6 +108,11 @@ command! BufExplorer :call BufExplorer()
 command! ToggleBufExplorer :call ToggleBufExplorer()
 command! BufExplorerHorizontalSplit :call BufExplorerHorizontalSplit()
 command! BufExplorerVerticalSplit :call BufExplorerVerticalSplit()
+command! BufExplorerSelect :call s:SelectBuffer()
+
+function! IsBufExplorerOpen()
+    return exists("s:running") && s:running == 1 && bufname(winbufnr(0)) == s:name
+endfunction
 
 " Set {{{2
 function! s:Set(var, default)
